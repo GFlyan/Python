@@ -1,6 +1,4 @@
-from ai import generateRelatory
-from pdf import createPDF
-from arq import plotar_grafico_periodo, obter_dados_serie
+from services import *
 import streamlit as st
 
 st.title("Análise de Série Temporal Financeira do IPEA")
@@ -21,11 +19,11 @@ if st.button("Gerar análise"):
                 st.plotly_chart(graphSerie)
 
                 with st.spinner("Gerando análise..."):
-                    response = generateRelatory(codSerie, dfSerie)
+                    response = gerar_relatorio(codSerie, dfSerie)
 
                 st.write(response)
 
-                with open(createPDF(codSerie=codSerie, dfSerie=dfSerie, iaText=response), "rb") as file:
+                with open(gerar_pdf(codSerie=codSerie, dfSerie=dfSerie, iaText=response), "rb") as file:
                     pdf_bytes = file.read()
 
                 st.download_button(
