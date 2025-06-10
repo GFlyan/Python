@@ -1,8 +1,8 @@
-import database_operation
+from dateutil.relativedelta import relativedelta
+from datetime import datetime
 
-resultado = database_operation.insert(53221, "usuario@email.com", "auto")
-
-if resultado:
-    print("✅ Série inserida com sucesso!")
-else:
-    print("❌ Falha na inserção.")
+hoje = datetime.now().date()
+print(f"Hoje: {hoje}")
+print(f"Daqui 1 mês {hoje + relativedelta(months=1)}")
+print(f"Daqui 3 meses: {hoje + relativedelta(months=3)}")
+print(f"Daqui 1 ano: {hoje + relativedelta(years=1)}")

@@ -1,5 +1,6 @@
 from services import *
 import streamlit as st
+from utils2 import gerar_relatorio as gr
 
 st.title("Análise de Série Temporal Financeira do IPEA")
 codSerie = st.text_input("Digite o código da série IPEA (exemplo: 21634):")
@@ -19,7 +20,7 @@ if st.button("Gerar análise"):
                 st.plotly_chart(graphSerie)
 
                 with st.spinner("Gerando análise..."):
-                    response = gerar_relatorio(codSerie, dfSerie)
+                    response = gr(codSerie, dfSerie)
 
                 st.write(response)
 
